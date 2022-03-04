@@ -1,5 +1,19 @@
 # Changelog
 
+# 3.3.0
+
+- Added spread for shadow effects ([@BigFlexLiu](https://github.com/BigFlexLiu))
+- Added support for OAuth token ([@BigFlexLiu](https://github.com/BigFlexLiu))
+- Removed unused imports
+
+# 3.2.0
+
+- Use `http` dependency on web, `http2` on other platforms ([@aloisdeniel](https://github.com/aloisdeniel))
+
+# 3.1.0
+
+- Add component set types and text auto resize property on type style ([@aloisdeniel](https://github.com/aloisdeniel))
+
 # 3.0.0
 
 - Migrate to null-safety ([@bjartebore](https://github.com/bjartebore))
