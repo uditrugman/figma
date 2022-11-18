@@ -47,6 +47,7 @@ extension FrameCopyWith on Frame {
     StrokeAlign? strokeAlign,
     num? strokeWeight,
     List<Paint>? strokes,
+    Map<StyleTypeKey, String>? styles,
     double? transitionDuration,
     EasingType? transitionEasing,
     String? transitionNodeID,
@@ -97,6 +98,7 @@ extension FrameCopyWith on Frame {
       strokeAlign: strokeAlign ?? this.strokeAlign,
       strokeWeight: strokeWeight ?? this.strokeWeight,
       strokes: strokes ?? this.strokes,
+      styles: styles ?? this.styles,
       transitionDuration: transitionDuration ?? this.transitionDuration,
       transitionEasing: transitionEasing ?? this.transitionEasing,
       transitionNodeID: transitionNodeID ?? this.transitionNodeID,
@@ -110,86 +112,87 @@ extension FrameCopyWith on Frame {
 // JsonSerializableGenerator
 // **************************************************************************
 
-Frame _$FrameFromJson(Map<String, dynamic> json) {
-  return Frame(
-    id: json['id'] as String,
-    name: json['name'] as String?,
-    visible: json['visible'] as bool? ?? true,
-    pluginData: json['pluginData'],
-    sharedPluginData: json['sharedPluginData'],
-    children: (json['children'] as List<dynamic>?)
-        ?.map(const NodeJsonConverter().fromJson)
-        .toList(),
-    locked: json['locked'] as bool? ?? false,
-    fills: (json['fills'] as List<dynamic>?)
-        ?.map((e) => Paint.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    strokes: (json['strokes'] as List<dynamic>?)
-        ?.map((e) => Paint.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    strokeWeight: json['strokeWeight'] as num?,
-    strokeAlign:
-        _$enumDecodeNullable(_$StrokeAlignEnumMap, json['strokeAlign']),
-    cornerRadius: (json['cornerRadius'] as num?)?.toDouble(),
-    rectangleCornerRadii: (json['rectangleCornerRadii'] as List<dynamic>?)
-        ?.map((e) => e as num)
-        .toList(),
-    exportSettings: (json['exportSettings'] as List<dynamic>?)
-        ?.map((e) => ExportSetting.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    blendMode: _$enumDecodeNullable(_$BlendModeEnumMap, json['blendMode']),
-    preserveRatio: json['preserveRatio'] as bool?,
-    layoutGrow: (json['layoutGrow'] as num?)?.toDouble(),
-    constraints: json['constraints'] == null
-        ? null
-        : LayoutConstraint.fromJson(
-            json['constraints'] as Map<String, dynamic>),
-    layoutAlign:
-        _$enumDecodeNullable(_$LayoutAlignEnumMap, json['layoutAlign']),
-    transitionNodeID: json['transitionNodeID'] as String?,
-    transitionDuration: (json['transitionDuration'] as num?)?.toDouble(),
-    transitionEasing:
-        _$enumDecodeNullable(_$EasingTypeEnumMap, json['transitionEasing']),
-    opacity: (json['opacity'] as num?)?.toDouble(),
-    absoluteBoundingBox: json['absoluteBoundingBox'] == null
-        ? null
-        : SizeRectangle.fromJson(
-            json['absoluteBoundingBox'] as Map<String, dynamic>),
-    size: json['size'] == null
-        ? null
-        : Vector2D.fromJson(json['size'] as Map<String, dynamic>),
-    relativeTransform: (json['relativeTransform'] as List<dynamic>?)
-        ?.map((e) => (e as List<dynamic>).map((e) => e as num).toList())
-        .toList(),
-    clipsContent: json['clipsContent'] as bool?,
-    layoutMode: _$enumDecodeNullable(_$LayoutModeEnumMap, json['layoutMode']),
-    primaryAxisAlignItems: _$enumDecodeNullable(
-        _$PrimaryAxisAlignItemsEnumMap, json['primaryAxisAlignItems']),
-    counterAxisAlignItems: _$enumDecodeNullable(
-        _$CounterAxisAlignItemsEnumMap, json['counterAxisAlignItems']),
-    primaryAxisSizingMode: _$enumDecodeNullable(
-        _$PrimaryAxisSizingModeEnumMap, json['primaryAxisSizingMode']),
-    counterAxisSizingMode: _$enumDecodeNullable(
-        _$CounterAxisSizingModeEnumMap, json['counterAxisSizingMode']),
-    paddingBottom: (json['paddingBottom'] as num?)?.toDouble(),
-    paddingLeft: (json['paddingLeft'] as num?)?.toDouble(),
-    paddingRight: (json['paddingRight'] as num?)?.toDouble(),
-    paddingTop: (json['paddingTop'] as num?)?.toDouble(),
-    horizontalPadding: json['horizontalPadding'] as num?,
-    verticalPadding: json['verticalPadding'] as num?,
-    itemSpacing: json['itemSpacing'] as num?,
-    layoutGrids: (json['layoutGrids'] as List<dynamic>?)
-        ?.map((e) => LayoutGrid.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    overflowDirection: _$enumDecodeNullable(
-        _$OverflowDirectionEnumMap, json['overflowDirection']),
-    effects: (json['effects'] as List<dynamic>?)
-        ?.map((e) => Effect.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    isMask: json['isMask'] as bool?,
-    isMaskOutline: json['isMaskOutline'] as bool?,
-  );
-}
+Frame _$FrameFromJson(Map<String, dynamic> json) => Frame(
+      id: json['id'] as String,
+      name: json['name'] as String?,
+      visible: json['visible'] as bool? ?? true,
+      pluginData: json['pluginData'],
+      sharedPluginData: json['sharedPluginData'],
+      children: (json['children'] as List<dynamic>?)
+          ?.map(const NodeJsonConverter().fromJson)
+          .toList(),
+      locked: json['locked'] as bool? ?? false,
+      fills: (json['fills'] as List<dynamic>?)
+          ?.map((e) => Paint.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      strokes: (json['strokes'] as List<dynamic>?)
+          ?.map((e) => Paint.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      strokeWeight: json['strokeWeight'] as num?,
+      strokeAlign:
+          $enumDecodeNullable(_$StrokeAlignEnumMap, json['strokeAlign']),
+      cornerRadius: (json['cornerRadius'] as num?)?.toDouble(),
+      rectangleCornerRadii: (json['rectangleCornerRadii'] as List<dynamic>?)
+          ?.map((e) => e as num)
+          .toList(),
+      exportSettings: (json['exportSettings'] as List<dynamic>?)
+          ?.map((e) => ExportSetting.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      blendMode: $enumDecodeNullable(_$BlendModeEnumMap, json['blendMode']),
+      preserveRatio: json['preserveRatio'] as bool?,
+      layoutGrow: (json['layoutGrow'] as num?)?.toDouble(),
+      constraints: json['constraints'] == null
+          ? null
+          : LayoutConstraint.fromJson(
+              json['constraints'] as Map<String, dynamic>),
+      layoutAlign:
+          $enumDecodeNullable(_$LayoutAlignEnumMap, json['layoutAlign']),
+      transitionNodeID: json['transitionNodeID'] as String?,
+      transitionDuration: (json['transitionDuration'] as num?)?.toDouble(),
+      transitionEasing:
+          $enumDecodeNullable(_$EasingTypeEnumMap, json['transitionEasing']),
+      opacity: (json['opacity'] as num?)?.toDouble(),
+      absoluteBoundingBox: json['absoluteBoundingBox'] == null
+          ? null
+          : SizeRectangle.fromJson(
+              json['absoluteBoundingBox'] as Map<String, dynamic>),
+      size: json['size'] == null
+          ? null
+          : Vector2D.fromJson(json['size'] as Map<String, dynamic>),
+      relativeTransform: (json['relativeTransform'] as List<dynamic>?)
+          ?.map((e) => (e as List<dynamic>).map((e) => e as num).toList())
+          .toList(),
+      clipsContent: json['clipsContent'] as bool?,
+      layoutMode: $enumDecodeNullable(_$LayoutModeEnumMap, json['layoutMode']),
+      primaryAxisAlignItems: $enumDecodeNullable(
+          _$PrimaryAxisAlignItemsEnumMap, json['primaryAxisAlignItems']),
+      counterAxisAlignItems: $enumDecodeNullable(
+          _$CounterAxisAlignItemsEnumMap, json['counterAxisAlignItems']),
+      primaryAxisSizingMode: $enumDecodeNullable(
+          _$PrimaryAxisSizingModeEnumMap, json['primaryAxisSizingMode']),
+      counterAxisSizingMode: $enumDecodeNullable(
+          _$CounterAxisSizingModeEnumMap, json['counterAxisSizingMode']),
+      paddingBottom: (json['paddingBottom'] as num?)?.toDouble(),
+      paddingLeft: (json['paddingLeft'] as num?)?.toDouble(),
+      paddingRight: (json['paddingRight'] as num?)?.toDouble(),
+      paddingTop: (json['paddingTop'] as num?)?.toDouble(),
+      horizontalPadding: json['horizontalPadding'] as num?,
+      verticalPadding: json['verticalPadding'] as num?,
+      itemSpacing: json['itemSpacing'] as num?,
+      layoutGrids: (json['layoutGrids'] as List<dynamic>?)
+          ?.map((e) => LayoutGrid.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      overflowDirection: $enumDecodeNullable(
+          _$OverflowDirectionEnumMap, json['overflowDirection']),
+      effects: (json['effects'] as List<dynamic>?)
+          ?.map((e) => Effect.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      isMask: json['isMask'] as bool?,
+      isMaskOutline: json['isMaskOutline'] as bool?,
+      styles: (json['styles'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry($enumDecode(_$StyleTypeKeyEnumMap, k), e as String),
+      ),
+    );
 
 Map<String, dynamic> _$FrameToJson(Frame instance) => <String, dynamic>{
       'id': instance.id,
@@ -242,44 +245,9 @@ Map<String, dynamic> _$FrameToJson(Frame instance) => <String, dynamic>{
       'effects': instance.effects,
       'isMask': instance.isMask,
       'isMaskOutline': instance.isMaskOutline,
+      'styles': instance.styles
+          ?.map((k, e) => MapEntry(_$StyleTypeKeyEnumMap[k]!, e)),
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
-
-K? _$enumDecodeNullable<K, V>(
-  Map<K, V> enumValues,
-  dynamic source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    return null;
-  }
-  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
-}
 
 const _$StrokeAlignEnumMap = {
   StrokeAlign.inside: 'INSIDE',
@@ -322,6 +290,7 @@ const _$EasingTypeEnumMap = {
   EasingType.easeOut: 'EASE_OUT',
   EasingType.easeInOut: 'EASE_IN_AND_OUT',
   EasingType.linear: 'LINEAR',
+  EasingType.customBezier: 'CUSTOM_BEZIER',
 };
 
 const _$LayoutModeEnumMap = {
@@ -358,4 +327,14 @@ const _$OverflowDirectionEnumMap = {
   OverflowDirection.verticalScrolling: 'VERTICAL_SCROLLING',
   OverflowDirection.horizontalVerticalScrolling:
       'HORIZONTAL_AND_VERICAL_SCROLLING',
+};
+
+const _$StyleTypeKeyEnumMap = {
+  StyleTypeKey.fill: 'fill',
+  StyleTypeKey.fills: 'fills',
+  StyleTypeKey.stroke: 'stroke',
+  StyleTypeKey.strokes: 'strokes',
+  StyleTypeKey.text: 'text',
+  StyleTypeKey.effect: 'effect',
+  StyleTypeKey.grid: 'grid',
 };

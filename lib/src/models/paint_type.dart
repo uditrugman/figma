@@ -10,7 +10,7 @@ enum PaintType {
   gradientRadial,
   @JsonValue('GRADIENT_ANGULAR')
   gradientAngular,
-  @JsonValue('GRADIENT_DIAMOND')
+  @JsonValue('GRADIENT_DIAMON')
   gradientDiamond,
   @JsonValue('IMAGE')
   image,

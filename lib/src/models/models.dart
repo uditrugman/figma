@@ -50,3 +50,4 @@ export 'project_file.dart';
 export 'frame_info.dart';
 export 'paint_type.dart';
 export 'scale_mode.dart';
+export 'section.dart';

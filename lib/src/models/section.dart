@@ -3,12 +3,12 @@ import 'package:figma/src/models/models.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 
-part 'frame.g.dart';
+part 'section.g.dart';
 
 /// A Figma Frame
 @JsonSerializable()
 @CopyWith()
-class Frame extends Node {
+class Section extends Node {
   /// An array of nodes that are direct children of this node
   @NodeJsonConverter()
   final List<Node?>? children;
@@ -167,7 +167,7 @@ class Frame extends Node {
   /// style in the top-level styles field.
   final Map<StyleTypeKey, String>? styles;
 
-  Frame({
+  Section({
     required String id,
     String? name,
     required bool visible,
@@ -265,8 +265,8 @@ class Frame extends Node {
         isMaskOutline,
       ];
 
-  factory Frame.fromJson(Map<String, dynamic> json) => _$FrameFromJson(json);
+  factory Section.fromJson(Map<String, dynamic> json) => _$SectionFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() => _$FrameToJson(this);
+  Map<String, dynamic> toJson() => _$SectionToJson(this);
 }

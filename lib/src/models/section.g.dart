@@ -1,18 +1,17 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'instance.dart';
+part of 'section.dart';
 
 // **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 
-extension InstanceCopyWith on Instance {
-  Instance copyWith({
+extension SectionCopyWith on Section {
+  Section copyWith({
     SizeRectangle? absoluteBoundingBox,
     BlendMode? blendMode,
     List<Node?>? children,
     bool? clipsContent,
-    String? componentId,
     LayoutConstraint? constraints,
     double? cornerRadius,
     CounterAxisAlignItems? counterAxisAlignItems,
@@ -48,18 +47,18 @@ extension InstanceCopyWith on Instance {
     StrokeAlign? strokeAlign,
     num? strokeWeight,
     List<Paint>? strokes,
+    Map<StyleTypeKey, String>? styles,
     double? transitionDuration,
     EasingType? transitionEasing,
     String? transitionNodeID,
     num? verticalPadding,
     bool? visible,
   }) {
-    return Instance(
+    return Section(
       absoluteBoundingBox: absoluteBoundingBox ?? this.absoluteBoundingBox,
       blendMode: blendMode ?? this.blendMode,
       children: children ?? this.children,
       clipsContent: clipsContent ?? this.clipsContent,
-      componentId: componentId ?? this.componentId,
       constraints: constraints ?? this.constraints,
       cornerRadius: cornerRadius ?? this.cornerRadius,
       counterAxisAlignItems:
@@ -99,6 +98,7 @@ extension InstanceCopyWith on Instance {
       strokeAlign: strokeAlign ?? this.strokeAlign,
       strokeWeight: strokeWeight ?? this.strokeWeight,
       strokes: strokes ?? this.strokes,
+      styles: styles ?? this.styles,
       transitionDuration: transitionDuration ?? this.transitionDuration,
       transitionEasing: transitionEasing ?? this.transitionEasing,
       transitionNodeID: transitionNodeID ?? this.transitionNodeID,
@@ -112,8 +112,7 @@ extension InstanceCopyWith on Instance {
 // JsonSerializableGenerator
 // **************************************************************************
 
-Instance _$InstanceFromJson(Map<String, dynamic> json) => Instance(
-      componentId: json['componentId'] as String?,
+Section _$SectionFromJson(Map<String, dynamic> json) => Section(
       id: json['id'] as String,
       name: json['name'] as String?,
       visible: json['visible'] as bool? ?? true,
@@ -141,6 +140,7 @@ Instance _$InstanceFromJson(Map<String, dynamic> json) => Instance(
           .toList(),
       blendMode: $enumDecodeNullable(_$BlendModeEnumMap, json['blendMode']),
       preserveRatio: json['preserveRatio'] as bool?,
+      layoutGrow: (json['layoutGrow'] as num?)?.toDouble(),
       constraints: json['constraints'] == null
           ? null
           : LayoutConstraint.fromJson(
@@ -164,18 +164,18 @@ Instance _$InstanceFromJson(Map<String, dynamic> json) => Instance(
           .toList(),
       clipsContent: json['clipsContent'] as bool?,
       layoutMode: $enumDecodeNullable(_$LayoutModeEnumMap, json['layoutMode']),
-      primaryAxisSizingMode: $enumDecodeNullable(
-          _$PrimaryAxisSizingModeEnumMap, json['primaryAxisSizingMode']),
-      counterAxisSizingMode: $enumDecodeNullable(
-          _$CounterAxisSizingModeEnumMap, json['counterAxisSizingMode']),
       primaryAxisAlignItems: $enumDecodeNullable(
           _$PrimaryAxisAlignItemsEnumMap, json['primaryAxisAlignItems']),
       counterAxisAlignItems: $enumDecodeNullable(
           _$CounterAxisAlignItemsEnumMap, json['counterAxisAlignItems']),
-      paddingLeft: (json['paddingLeft'] as num?)?.toDouble(),
-      paddingTop: (json['paddingTop'] as num?)?.toDouble(),
-      paddingRight: (json['paddingRight'] as num?)?.toDouble(),
+      primaryAxisSizingMode: $enumDecodeNullable(
+          _$PrimaryAxisSizingModeEnumMap, json['primaryAxisSizingMode']),
+      counterAxisSizingMode: $enumDecodeNullable(
+          _$CounterAxisSizingModeEnumMap, json['counterAxisSizingMode']),
       paddingBottom: (json['paddingBottom'] as num?)?.toDouble(),
+      paddingLeft: (json['paddingLeft'] as num?)?.toDouble(),
+      paddingRight: (json['paddingRight'] as num?)?.toDouble(),
+      paddingTop: (json['paddingTop'] as num?)?.toDouble(),
       horizontalPadding: json['horizontalPadding'] as num?,
       verticalPadding: json['verticalPadding'] as num?,
       itemSpacing: json['itemSpacing'] as num?,
@@ -189,10 +189,12 @@ Instance _$InstanceFromJson(Map<String, dynamic> json) => Instance(
           .toList(),
       isMask: json['isMask'] as bool?,
       isMaskOutline: json['isMaskOutline'] as bool?,
-      layoutGrow: (json['layoutGrow'] as num?)?.toDouble(),
+      styles: (json['styles'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry($enumDecode(_$StyleTypeKeyEnumMap, k), e as String),
+      ),
     );
 
-Map<String, dynamic> _$InstanceToJson(Instance instance) => <String, dynamic>{
+Map<String, dynamic> _$SectionToJson(Section instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'visible': instance.visible,
@@ -243,7 +245,8 @@ Map<String, dynamic> _$InstanceToJson(Instance instance) => <String, dynamic>{
       'effects': instance.effects,
       'isMask': instance.isMask,
       'isMaskOutline': instance.isMaskOutline,
-      'componentId': instance.componentId,
+      'styles': instance.styles
+          ?.map((k, e) => MapEntry(_$StyleTypeKeyEnumMap[k]!, e)),
     };
 
 const _$StrokeAlignEnumMap = {
@@ -296,16 +299,6 @@ const _$LayoutModeEnumMap = {
   LayoutMode.vertical: 'VERTICAL',
 };
 
-const _$PrimaryAxisSizingModeEnumMap = {
-  PrimaryAxisSizingMode.fixed: 'FIXED',
-  PrimaryAxisSizingMode.auto: 'AUTO',
-};
-
-const _$CounterAxisSizingModeEnumMap = {
-  CounterAxisSizingMode.fixed: 'FIXED',
-  CounterAxisSizingMode.auto: 'AUTO',
-};
-
 const _$PrimaryAxisAlignItemsEnumMap = {
   PrimaryAxisAlignItems.min: 'MIN',
   PrimaryAxisAlignItems.center: 'CENTER',
@@ -319,9 +312,29 @@ const _$CounterAxisAlignItemsEnumMap = {
   CounterAxisAlignItems.max: 'MAX',
 };
 
+const _$PrimaryAxisSizingModeEnumMap = {
+  PrimaryAxisSizingMode.fixed: 'FIXED',
+  PrimaryAxisSizingMode.auto: 'AUTO',
+};
+
+const _$CounterAxisSizingModeEnumMap = {
+  CounterAxisSizingMode.fixed: 'FIXED',
+  CounterAxisSizingMode.auto: 'AUTO',
+};
+
 const _$OverflowDirectionEnumMap = {
   OverflowDirection.horizontalScrolling: 'HORIZONTAL_SCROLLING',
   OverflowDirection.verticalScrolling: 'VERTICAL_SCROLLING',
   OverflowDirection.horizontalVerticalScrolling:
       'HORIZONTAL_AND_VERICAL_SCROLLING',
+};
+
+const _$StyleTypeKeyEnumMap = {
+  StyleTypeKey.fill: 'fill',
+  StyleTypeKey.fills: 'fills',
+  StyleTypeKey.stroke: 'stroke',
+  StyleTypeKey.strokes: 'strokes',
+  StyleTypeKey.text: 'text',
+  StyleTypeKey.effect: 'effect',
+  StyleTypeKey.grid: 'grid',
 };
